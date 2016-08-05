@@ -25,19 +25,20 @@ object Main {
   /**
    * Exercise 2
    */
-    def balance(chars: List[Char]): Boolean = balance(chars, 0)
+    def balance(chars: List[Char]): Boolean = {
+      def iterate(chars: List[Char], count: Int): Boolean = {
+        if (chars.isEmpty) return count == 0
 
-  private def balance(chars: List[Char], count: Int): Boolean = {
-    if (chars.isEmpty) return count == 0
-
-    val tail = chars.tail
-    chars.head match {
-      case '(' => balance(tail, count + 1)
-      case ')' if count > 0 => balance(tail, count - 1)
-      case ')' => false
-      case _ => balance(tail, count)
+        val tail = chars.tail
+        chars.head match {
+          case '(' => iterate(tail, count + 1)
+          case ')' if count > 0 => iterate(tail, count - 1)
+          case ')' => false
+          case _ => iterate(tail, count)
+        }
+      }
+      iterate(chars, 0)
     }
-  }
   
   /**
    * Exercise 3
