@@ -25,7 +25,7 @@ object Lists {
    */
     def sum(xs: List[Int]): Int = {
       if (xs.isEmpty) {
-        0
+        return 0
       }
       xs.head + sum(xs.tail)
     }
@@ -52,7 +52,7 @@ object Lists {
 
     private def max(xs: List[Int], previousLargest: Int): Int = {
       if (xs.isEmpty) {
-        previousLargest
+        return previousLargest
       }
       if (xs.head > previousLargest) {
         max(xs.tail, xs.head)
